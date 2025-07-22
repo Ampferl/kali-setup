@@ -14,6 +14,8 @@ if [ ! -f ~/.ssh/id_ed25519 ]; then
             exit 1
             ;;
     esac
+else
+	ssh-add ~/.ssh/id_ed25519
 fi
 
 
@@ -93,6 +95,7 @@ echo "[i] Setting up Powerlevel10k..."
 git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ~/powerlevel10k
 echo 'source ~/powerlevel10k/powerlevel10k.zsh-theme' >> ~/.zshrc
 cp .p10k.zsh ~/.p10k.zsh
+echo '[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh' >> ~/.zshrc
 
 echo "[i] After the reboot select i3"
 sudo reboot now
